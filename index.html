@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes de Gravity Falls</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: larger;
+            color: rgb(136, 141, 138);
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgb(53, 54, 53) 25%, rgb(47, 49, 49) 50%, rgb(54, 53, 53) 25%);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .character {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(10, 10, 10, 0.556);
+            border-radius: 14px;
+            box-shadow: violet;
+        }
+
+        .character img {
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .character-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personajes de Gravity Falls</h1>
+    <hr>
+    <div id="character-container" class="character-container"></div>
+
+    <script>
+        // Array con personajes de Gravity Falls
+        const personajes = [
+            {
+                id: 1,
+                name: "Dipper Pines",
+                image: "https://lh6.googleusercontent.com/proxy/xqaORBV6ePKdvXl7gq0WUl6Gosbppgh4IyRZW-M2wymmpm_7ac5eszKueEtPQdGNQKHn5SdyVAfIKpq27bmxoUoOFCdz-KOXCgTUJapF93lkPUB3pEhi0A5b26oxLFsc",
+                species: "Humano",
+                status: "Vivo",
+                type: "Principal",
+                gender: "Masculino",
+                origin: { name: "Gravity Falls" }
+            },
+            {
+                id: 2,
+                name: "Mabel Pines",
+                image: "https://i.pinimg.com/474x/f6/9f/27/f69f27b5cec0e16b25caa43d7c34ccd9.jpg",
+                species: "Humano",
+                status: "Vivo",
+                type: "Principal",
+                gender: "Femenino",
+                origin: { name: "Gravity Falls" }
+            },
+            {
+                id: 3,
+                name: "Grunkle Stan",
+                image: "https://i.pinimg.com/736x/dd/59/1a/dd591a8a063a4e7988a815dca64f71db.jpg",
+                species: "Humano",
+                status: "Vivo",
+                type: "Secundario",
+                gender: "Masculino",
+                origin: { name: "Gravity Falls" }
+            },
+            {
+                id: 4,
+                name: "Soos",
+                image: "https://i.pinimg.com/originals/3c/0b/09/3c0b09d781b55f99cd20fd8084a5d2de.jpg",
+                species: "Humano",
+                status: "Vivo",
+                type: "Secundario",
+                gender: "Masculino",
+                origin: { name: "Gravity Falls" }
+            },
+            {
+                id: 5,
+                name: "Bill Cipher",
+                image: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fa0adbc3-b094-4f4e-bcc5-2380d6984558/d9ia34c-1e46aef4-dfd1-437c-b143-efc287659ca2.png/v1/fill/w_807,h_990,q_70,strp/bill_cipher_by_aleximusprime_d9ia34c-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI1NiIsInBhdGgiOiJcL2ZcL2ZhMGFkYmMzLWIwOTQtNGY0ZS1iY2M1LTIzODBkNjk4NDU1OFwvZDlpYTM0Yy0xZTQ2YWVmNC1kZmQxLTQzN2MtYjE0My1lZmMyODc2NTljYTIucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.riDQYXsKcfGp1mo6KfNWp62NBt8wuZX-dV6X6nItY8Y",
+                species: "Demonio",
+                status: "Muerto",
+                type: "Villano",
+                gender: "N/A",
+                origin: { name: "Dimensión de los Sueños" }
+            }
+        ];
+
+        // Función para mostrar los personajes
+        function mostrarPersonajes() {
+            const characterContainer = document.getElementById('character-container');
+            personajes.forEach(character => {
+                const characterElement = document.createElement('div');
+                characterElement.classList.add('character');
+                characterElement.innerHTML = `
+                    <img src="${character.image}" alt="${character.name}" width="100">
+                    <div>
+                        <h3>Nombre: ${character.name}</h3>
+                        <hr>
+                        <p>Especie: ${character.species}</p>
+                        <p>Estado: ${character.status}</p>
+                        <p>Tipo: ${character.type}</p>
+                        <p>Género: ${character.gender}</p>
+                        <p>Lugar de origen: ${character.origin.name}</p>
+                        <hr>
+                    </div>
+                `;
+                characterContainer.appendChild(characterElement);
+            });
+        }
+
+        // Llamamos a la función para cargar los personajes al cargar la página
+        window.onload = mostrarPersonajes;
+    </script>
+</body>
+</html>
